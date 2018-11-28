@@ -63,6 +63,7 @@ var useCaseMatrix = map[string]map[string]map[string]bulkQueryGen.QueryGenerator
 			"influx-http":      influxdb.NewInfluxQLDevopsSingleHost,
 			"mongo":            mongodb.NewMongoDevopsSingleHost,
 			"opentsdb":         opentsdb.NewOpenTSDBDevopsSingleHost,
+			"skytsdb":          opentsdb.NewOpenTSDBDevopsSingleHost,
 			"timescaledb":      timescaledb.NewTimescaleDevopsSingleHost,
 		},
 		DevOpsOneHostTwelveHours: {
@@ -72,6 +73,7 @@ var useCaseMatrix = map[string]map[string]map[string]bulkQueryGen.QueryGenerator
 			"influx-http":      influxdb.NewInfluxQLDevopsSingleHost12hr,
 			"mongo":            mongodb.NewMongoDevopsSingleHost12hr,
 			"opentsdb":         opentsdb.NewOpenTSDBDevopsSingleHost12hr,
+			"skytsdb":          opentsdb.NewOpenTSDBDevopsSingleHost12hr,
 			"timescaledb":      timescaledb.NewTimescaleDevopsSingleHost12hr,
 		},
 		DevOpsEightHostsOneHour: {
@@ -81,6 +83,7 @@ var useCaseMatrix = map[string]map[string]map[string]bulkQueryGen.QueryGenerator
 			"influx-http":      influxdb.NewInfluxQLDevops8Hosts,
 			"mongo":            mongodb.NewMongoDevops8Hosts1Hr,
 			"opentsdb":         opentsdb.NewOpenTSDBDevops8Hosts,
+			"skytsdb":          opentsdb.NewOpenTSDBDevops8Hosts,
 			"timescaledb":      timescaledb.NewTimescaleDevops8Hosts1Hr,
 		},
 		DevOpsGroupBy: {

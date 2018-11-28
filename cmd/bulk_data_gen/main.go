@@ -27,7 +27,7 @@ import (
 )
 
 // Output data format choices:
-var formatChoices = []string{"influx-bulk", "es-bulk", "cassandra", "mongo", "opentsdb", "timescaledb-sql", "timescaledb-copyFrom"}
+var formatChoices = []string{"influx-bulk", "es-bulk", "cassandra", "mongo", "opentsdb", "skytsdb", "timescaledb-sql", "timescaledb-copyFrom"}
 
 // Use case choices:
 var useCaseChoices = []string{"devops", "iot", "dashboard"}
@@ -161,6 +161,8 @@ func main() {
 	case "mongo":
 		serializer = common.NewSerializerMongo()
 	case "opentsdb":
+		serializer = common.NewSerializerOpenTSDB()
+	case "skytsdb":
 		serializer = common.NewSerializerOpenTSDB()
 	case "timescaledb-sql":
 		serializer = common.NewSerializerTimescaleSql()

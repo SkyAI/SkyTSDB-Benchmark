@@ -161,22 +161,22 @@ func NewHost(i int, offset int, start time.Time) Host {
 
 	region := &Regions[rand.Intn(len(Regions))]
 	rackId := rand.Int63n(MachineRackChoicesPerDatacenter)
-	serviceId := rand.Int63n(MachineServiceChoices)
-	serviceVersionId := rand.Int63n(MachineServiceVersionChoices)
-	serviceEnvironment := RandChoice(MachineServiceEnvironmentChoices)
+	// serviceId := rand.Int63n(MachineServiceChoices)
+	// serviceVersionId := rand.Int63n(MachineServiceVersionChoices)
+	// serviceEnvironment := RandChoice(MachineServiceEnvironmentChoices)
 
 	h := Host{
 		// Tag Values that are static throughout the life of a Host:
-		Name:               []byte(fmt.Sprintf("host_%d", i+offset)),
-		Region:             []byte(fmt.Sprintf("%s", region.Name)),
-		Datacenter:         RandChoice(region.Datacenters),
-		Rack:               []byte(fmt.Sprintf("%d", rackId)),
-		Arch:               RandChoice(MachineArchChoices),
-		OS:                 RandChoice(MachineOSChoices),
-		Service:            []byte(fmt.Sprintf("%d", serviceId)),
-		ServiceVersion:     []byte(fmt.Sprintf("%d", serviceVersionId)),
-		ServiceEnvironment: serviceEnvironment,
-		Team:               RandChoice(MachineTeamChoices),
+		Name:       []byte(fmt.Sprintf("host_%d", i+offset)),
+		Region:     []byte(fmt.Sprintf("%s", region.Name)),
+		Datacenter: RandChoice(region.Datacenters),
+		Rack:       []byte(fmt.Sprintf("%d", rackId)),
+		Arch:       RandChoice(MachineArchChoices),
+		OS:         RandChoice(MachineOSChoices),
+		// Service:            []byte(fmt.Sprintf("%d", serviceId)),
+		// ServiceVersion:     []byte(fmt.Sprintf("%d", serviceVersionId)),
+		// ServiceEnvironment: serviceEnvironment,
+		// Team:               RandChoice(MachineTeamChoices),
 
 		SimulatedMeasurements: sm,
 	}
