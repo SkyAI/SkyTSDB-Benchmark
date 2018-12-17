@@ -111,7 +111,7 @@ var (
 
 var (
 	// The duration of a log epoch.
-	EpochDuration = 10 * time.Second
+	EpochDuration = 1 * time.Second
 
 	// Tag fields common to all hosts:
 	MachineTagKeys = [][]byte{
