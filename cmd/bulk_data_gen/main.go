@@ -54,6 +54,8 @@ var (
 
 	seed  int64
 	debug int
+
+	mSuffix string
 )
 
 // Parse args:
@@ -72,6 +74,8 @@ func init() {
 
 	flag.UintVar(&interleavedGenerationGroupID, "interleaved-generation-group-id", 0, "Group (0-indexed) to perform round-robin serialization within. Use this to scale up data generation to multiple processes.")
 	flag.UintVar(&interleavedGenerationGroups, "interleaved-generation-groups", 1, "The number of round-robin serialization groups. Use this to scale up data generation to multiple processes.")
+
+	flag.StringVar(&mSuffix, "metric-suffix", "","Metric suffix(default '').")
 
 	flag.Parse()
 
@@ -108,6 +112,7 @@ func init() {
 		log.Fatal(err)
 	}
 	timestampEnd = timestampEnd.UTC()
+	mSuffix = strings.TrimSpace(mSuffix)
 }
 
 func main() {
@@ -179,6 +184,10 @@ func main() {
 	n := int64(0)
 	for !sim.Finished() {
 		sim.Next(point)
+		if mSuffix != ""{
+			point.MeasurementName = append(point.MeasurementName, "_"...)
+			point.MeasurementName = append(point.MeasurementName, mSuffix...)
+		}
 		n++
 		// in the default case this is always true
 		if currentInterleavedGroup == interleavedGenerationGroupID {
